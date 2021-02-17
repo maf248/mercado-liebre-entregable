@@ -31,7 +31,11 @@ const controller = {
 
 	// Update - Form to edit
 	edit: (req, res) => {
-		res.render('product-edit-form');
+		db.Product.findByPk(req.params.id)
+		.then((product) => {
+			res.render('product-edit-form', {productToEdit: product});
+		})
+		
 	},
 	// Update - Method to update
 	update: (req, res) => {
