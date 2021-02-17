@@ -28,11 +28,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
 
         },
-        stock: {
-            type: DataTypes.INTEGER.UNSIGNED,
-            allowNull: false
+        // stock: {
+        //     type: DataTypes.INTEGER.UNSIGNED,
+        //     allowNull: false
 
-        },
+        // },
         created_at: {
             type: DataTypes.DATE,
             allowNull: false
@@ -62,12 +62,12 @@ module.exports = (sequelize, DataTypes) => {
         Product.belongsTo(models.Category, {
             as: "Categories",
             foreignKey: "category_id",
-            timestamps: true
+            timestamps: false
         })
         Product.belongsTo(models.Brand, {
             as: "Brands",
             foreignKey: "brand_id",
-            timestamps: true
+            timestamps: false
         })
     }
 
