@@ -15,7 +15,7 @@ const controller = {
 	detail: (req, res) => {
 		db.Product.findByPk(req.params.id)
 		.then((product) => {
-			res.render('detail', {product: product});
+			res.render('detail', {product: product, toThousand: toThousand});
 		})
 	},
 
