@@ -6,7 +6,7 @@ const controller = {
 	index: (req, res) => {
 		db.Product.findAll()
 		.then((products) => {
-			res.render('index', {products: products});
+			res.render('index', {products: products, toThousand: toThousand});
 		})
 	},
 	search: (req, res) => {
