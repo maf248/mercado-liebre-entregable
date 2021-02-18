@@ -1,13 +1,14 @@
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const db = require('../db/models');
+const {validationResult} = require('express-validator');
 
 const controller = {
 	// Root - Show all products
 	index: (req, res) => {
 		db.Product.findAll()
 		.then((products) => {
-			res.render('products', {products: products});
+			res.render('products', {products: products, toThousand: toThousand});
 		})
 		.catch(error => {
 			console.log(error);
@@ -50,21 +51,45 @@ const controller = {
 	
 	// Create -  Method to store
 	store: (req, res) => {
-		db.Product.create({
-			title: req.body.name,
-			description: req.body.description, 
-			photo: '/images/products/' + req.file.filename,
-			price: req.body.price,
-			category_id: req.body.category,
-			brand_id: req.body.brand			
-		})
-		.then(newProduct => {
-			res.redirect('/products/' + newProduct.id);
-		})
-		.catch(error => {
+		let errors = validationResult(req);
+		 /*---Se chequean los inputs. Si no hay errores los guarda---*/
+		if (errors.isEmpty()) {
+            /*---Si NO hay errores en los campos, guarda todo y redirije a detalle del producto---*/
+			db.Product.create({
+				title: req.body.name,
+				description: req.body.description, 
+				photo: '/images/products/' + req.file.filename,
+				price: req.body.price,
+				category_id: req.body.category,
+				brand_id: req.body.brand			
+			})
+			.then(newProduct => {
+				res.redirect('/products/' + newProduct.id);
+			})
+			.catch(error => {
+				console.log(error);
+				res.render('error');
+			})
+		} else {
+
+			db.Category.findAll()
+			.then((categories) => {
+				db.Brand.findAll()
+				.then((brands) => {
+					console.log(errors.errors);
+					return res.render('product-create-form', {errors: errors.errors, body: req.body, categories: categories, brands: brands});
+				})
+				.catch(error => {
+				console.log(error);
+				res.render('error');
+				})
+			})
+			.catch(error => {
 			console.log(error);
 			res.render('error');
-		})
+			})
+			
+		}
 	},
 
 	// Update - Form to edit

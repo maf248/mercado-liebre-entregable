@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const productValidate = require('../middlewares/productValidate')
 
 // ************ Controller Require ************
 const productsController = require('../controllers/productsController');
@@ -24,7 +25,7 @@ router.get('/', productsController.index);
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create', productsController.create); 
-router.post('/create', upload.single('productImage'), productsController.store); 
+router.post('/create', upload.single('productImage'), productValidate, productsController.store); 
 
 
 /*** GET ONE PRODUCT ***/ 
