@@ -71,7 +71,22 @@ const controller = {
 	edit: (req, res) => {
 		db.Product.findByPk(req.params.id)
 		.then((product) => {
-			res.render('product-edit-form', {productToEdit: product});
+			db.Category.findAll()
+			.then((categories) => {
+					db.Brand.findAll()
+					.then((brands) => {
+					res.render('product-edit-form', {productToEdit: product, categories: categories, brands: brands});
+					})
+					.catch(error => {
+					console.log(error);
+					res.render('error');
+					})
+		})
+			.catch(error => {
+			console.log(error);
+			res.render('error');
+			})
+
 		})
 		.catch(error => {
 			console.log(error);
@@ -81,7 +96,21 @@ const controller = {
 	},
 	// Update - Method to update
 	update: (req, res) => {
-		// Do the magic
+		db.Product.update({
+			title: req.body.name,
+			description: req.body.description, 
+			photo: '/images/products/' + req.file.filename,
+			price: req.body.price,
+			category_id: req.body.category,
+			brand_id: req.body.brand
+		}, { where: {id: req.params.id} })
+		.then(updatedProduct => {
+			res.redirect('/products/' + req.params.id);
+		})
+		.catch(error => {
+			console.log(error);
+			res.render('error');
+		})
 	},
 
 	// Delete - Delete one product from DB
