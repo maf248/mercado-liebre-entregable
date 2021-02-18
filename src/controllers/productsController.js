@@ -86,7 +86,18 @@ const controller = {
 
 	// Delete - Delete one product from DB
 	destroy : (req, res) => {
-		// Do the magic
+		db.Product.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(
+                res.redirect('/products')
+        )
+		.catch(error => {
+			console.log(error);
+			res.render('error')
+		})
 	}
 };
 
