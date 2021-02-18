@@ -11,7 +11,7 @@ const controller = {
 		})
 		.catch(error => {
 			console.log(error);
-			res.render('error')
+			res.render('error');
 		})
 	},
 
@@ -23,7 +23,7 @@ const controller = {
 		})
 		.catch(error => {
 			console.log(error);
-			res.render('error')
+			res.render('error');
 		})
 	},
 
@@ -37,12 +37,12 @@ const controller = {
 			})
 			.catch(error => {
 				console.log(error);
-				res.render('error')
+				res.render('error');
 			})
 		})
 		.catch(error => {
 			console.log(error);
-			res.render('error')
+			res.render('error');
 		})
 		
 		
@@ -59,11 +59,11 @@ const controller = {
 			brand_id: req.body.brand			
 		})
 		.then(newProduct => {
-			res.redirect('/products')
+			res.redirect('/products/' + newProduct.id);
 		})
 		.catch(error => {
 			console.log(error);
-			res.render('error')
+			res.render('error');
 		})
 	},
 
@@ -75,7 +75,7 @@ const controller = {
 		})
 		.catch(error => {
 			console.log(error);
-			res.render('error')
+			res.render('error');
 		})
 		
 	},
@@ -96,7 +96,7 @@ const controller = {
         )
 		.catch(error => {
 			console.log(error);
-			res.render('error')
+			res.render('error');
 		})
 	}
 };
