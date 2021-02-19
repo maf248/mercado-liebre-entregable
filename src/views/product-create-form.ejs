@@ -34,10 +34,7 @@
 									<p><%= error.msg %></p>
 							<% } }) } %>
 					</div>
-					<div class="col-12 col-md-6">
-						<label for="discount" class="form-label">Descuento:</label>
-						<input type="text" id="discount" name="discount" placeholder="Ej: 15" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.discount %>"<% } %>>
-					</div>
+					
 					<div class="col-12 col-md-6">
 						<label for="category" class="form-label">Categoría:</label>
 						<select name="category" id="category" class="form-input">
@@ -46,6 +43,10 @@
 							<option value="<%= category.id %>"<% if (typeof body != 'undefined' && body.category == category.id) { %> selected="selected"<% } %>><%= category.name %></option>
 							<% }); %>
 						</select>
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="discount" class="form-label">Descuento:</label>
+						<input type="number" min="0" max="100" id="discount" name="discount" placeholder="Ej: 15 %" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.discount %>"<% } else { %> value="0" <% } %>>
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="brand" class="form-label">Marca:</label>
@@ -62,8 +63,12 @@
 							<% } }) } %>
 					</div>
 					<div class="col-12 col-md-6">
+						<label for="stock" class="form-label">Stock:</label>
+						<input type="number" id="discount" name="stock" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.stock %>"<% } else { %> value="1" <% } %>>
+					</div>
+					<div class="col-12 col-md-6">
 						<label for="productImage" class="form-label">Imagen:</label>
-						<input type="file" name="productImage" accept="image/*" class="form-input" required <% if (typeof body != 'undefined') { %> value="<%= body.productImage %>"<% } %>>
+						<input type="file" name="productImage" accept="image/*" class="form-input"> 
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "productImage") { %>

@@ -19,7 +19,7 @@ module.exports = [
     .withMessage('Has superado el máximo de 1.000 caracteres'),
     body('productImage')
     .custom(function(value, {req}) {
-        if (typeof req.file.filename != 'undefined') {
+        if (typeof req.file != 'undefined') {
 
             var extension = (path.extname(req.file.filename)).toLowerCase();
             switch (extension) {

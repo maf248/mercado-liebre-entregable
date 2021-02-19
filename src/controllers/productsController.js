@@ -60,6 +60,7 @@ const controller = {
 				description: req.body.description, 
 				photo: '/images/products/' + req.file.filename,
 				price: req.body.price,
+				stock: req.body.stock,
 				category_id: req.body.category,
 				brand_id: req.body.brand			
 			})
@@ -77,7 +78,7 @@ const controller = {
 				db.Brand.findAll()
 				.then((brands) => {
 					console.log(errors.errors);
-					return res.render('product-create-form', {errors: errors.errors, body: req.body, categories: categories, brands: brands});
+					return res.render('product-create-form', {errors: errors.errors, body: req.body, file: req.file, categories: categories, brands: brands});
 				})
 				.catch(error => {
 				console.log(error);

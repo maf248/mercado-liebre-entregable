@@ -28,11 +28,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
 
         },
-        // stock: {
-        //     type: DataTypes.INTEGER.UNSIGNED,
-        //     allowNull: false
+        stock: {
+            type: DataTypes.INTEGER.UNSIGNED,
+            allowNull: false
 
-        // },
+        },
         created_at: {
             type: DataTypes.DATE,
             allowNull: false
