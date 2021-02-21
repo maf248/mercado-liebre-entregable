@@ -77,7 +77,7 @@ const controller = {
 			.then((categories) => {
 				db.Brand.findAll()
 				.then((brands) => {
-					console.log(errors.errors);
+					
 					return res.render('product-create-form', {errors: errors.errors, body: req.body, categories: categories, brands: brands});
 				})
 				.catch(error => {

@@ -14,6 +14,9 @@ module.exports = [
     check('brand')
     .isNumeric()
     .withMessage('Por favor selecciona una marca de la lista'),
+    check('category')
+    .isNumeric()
+    .withMessage('Por favor selecciona una categoría de la lista'),
     check('description')
     .isLength({max:1000})
     .withMessage('Has superado el máximo de 1.000 caracteres'),
