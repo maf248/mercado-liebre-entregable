@@ -122,21 +122,38 @@ const controller = {
 	},
 	// Update - Method to update
 	update: (req, res) => {
-		db.Product.update({
-			title: req.body.name,
-			description: req.body.description, 
-			photo: '/images/products/' + req.file.filename,
-			price: req.body.price,
-			category_id: req.body.category,
-			brand_id: req.body.brand
-		}, { where: {id: req.params.id} })
-		.then(updatedProduct => {
-			res.redirect('/products/' + req.params.id);
-		})
-		.catch(error => {
-			console.log(error);
-			res.render('error');
-		})
+		if (req.file) {
+			db.Product.update({
+				title: req.body.name,
+				description: req.body.description, 
+				photo: '/images/products/' + req.file.filename,
+				stock: req.body.stock,
+				price: req.body.price,
+				brand_id: req.body.brand
+			}, { where: {id: req.params.id} })
+			.then(updatedProduct => {
+				res.redirect('/products/' + req.params.id);
+			})
+			.catch(error => {
+				console.log(error);
+				res.render('error');
+			})
+		} else {
+			db.Product.update({
+				title: req.body.name,
+				description: req.body.description,
+				stock: req.body.stock,
+				price: req.body.price,
+				brand_id: req.body.brand
+			}, { where: {id: req.params.id} })
+			.then(updatedProduct => {
+				res.redirect('/products/' + req.params.id);
+			})
+			.catch(error => {
+				console.log(error);
+				res.render('error');
+			})
+		}
 	},
 
 	// Delete - Delete one product from DB

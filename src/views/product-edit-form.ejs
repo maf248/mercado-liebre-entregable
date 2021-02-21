@@ -27,9 +27,8 @@
 					<div class="col-12 col-md-6">
 						<label for="category" class="form-label">Categoría:</label>
 						<select name="category" id="category" class="form-input">
-							<option value="">Elegí</option>
 							<% categories.forEach(category => { %>
-							<option value="<%= category.id %>"><%= category.name %></option>
+							<option value="<%= category.id %>"<% if (productToEdit.category_id == category.id) { %> selected="selected"<% } else { %> disabled <% } %>><%= category.name %></option>
 							<% }); %>
 						</select>
 					</div>
@@ -40,9 +39,8 @@
 					<div class="col-12 col-md-6">
 						<label for="brand" class="form-label">Marca:</label>
 						<select name="brand" id="brand" class="form-input">
-							<option value="">Elegí</option>
 							<% brands.forEach(brand => { %>
-							<option value="<%= brand.id %>"><%= brand.name %></option>
+							<option value="<%= brand.id %>" <% if (productToEdit.brand_id == brand.id) { %> selected="selected"<% } %>><%= brand.name %></option>
 							<% }); %>
 						</select>
 					</div>
@@ -52,7 +50,7 @@
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="productImage" class="form-label">Imagen:</label>
-						<input type="file" name="productImage" accept="image/*" class="form-input" required>
+						<input type="file" name="productImage" accept="image/*" class="form-input">
 					</div>
 					<div class="col-12">
 						<label for="description" class="form-label">Descipción:</label>
