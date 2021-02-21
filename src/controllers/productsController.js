@@ -78,7 +78,7 @@ const controller = {
 				db.Brand.findAll()
 				.then((brands) => {
 					console.log(errors.errors);
-					return res.render('product-create-form', {errors: errors.errors, body: req.body, file: req.file, categories: categories, brands: brands});
+					return res.render('product-create-form', {errors: errors.errors, body: req.body, categories: categories, brands: brands});
 				})
 				.catch(error => {
 				console.log(error);
@@ -122,37 +122,65 @@ const controller = {
 	},
 	// Update - Method to update
 	update: (req, res) => {
-		if (req.file) {
-			db.Product.update({
-				title: req.body.name,
-				description: req.body.description, 
-				photo: '/images/products/' + req.file.filename,
-				stock: req.body.stock,
-				price: req.body.price,
-				brand_id: req.body.brand
-			}, { where: {id: req.params.id} })
-			.then(updatedProduct => {
-				res.redirect('/products/' + req.params.id);
-			})
-			.catch(error => {
-				console.log(error);
-				res.render('error');
-			})
+		let errors = validationResult(req);
+		 /*---Se chequean los inputs. Si no hay errores los guarda---*/
+		if (errors.isEmpty()) {
+			if (req.file) {
+				db.Product.update({
+					title: req.body.name,
+					description: req.body.description, 
+					photo: '/images/products/' + req.file.filename,
+					stock: req.body.stock,
+					price: req.body.price,
+					brand_id: req.body.brand
+				}, { where: {id: req.params.id} })
+				.then(updatedProduct => {
+					res.redirect('/products/' + req.params.id);
+				})
+				.catch(error => {
+					console.log(error);
+					res.render('error');
+				})
+			} else {
+				db.Product.update({
+					title: req.body.name,
+					description: req.body.description,
+					stock: req.body.stock,
+					price: req.body.price,
+					brand_id: req.body.brand
+				}, { where: {id: req.params.id} })
+				.then(updatedProduct => {
+					res.redirect('/products/' + req.params.id);
+				})
+				.catch(error => {
+					console.log(error);
+					res.render('error');
+				})
+			}
 		} else {
-			db.Product.update({
-				title: req.body.name,
-				description: req.body.description,
-				stock: req.body.stock,
-				price: req.body.price,
-				brand_id: req.body.brand
-			}, { where: {id: req.params.id} })
-			.then(updatedProduct => {
-				res.redirect('/products/' + req.params.id);
-			})
-			.catch(error => {
+			db.Product.findByPk(req.params.id)
+			.then((product) => {
+				db.Category.findAll()
+				.then((categories) => {
+						db.Brand.findAll()
+						.then((brands) => {
+						res.render('product-edit-form', {productToEdit: product, errors: errors.errors, body: req.body, categories: categories, brands: brands});
+						})
+						.catch(error => {
+						console.log(error);
+						res.render('error');
+						})
+				})
+				.catch(error => {
 				console.log(error);
 				res.render('error');
+				})
+
 			})
+			.catch(error => {
+			console.log(error);
+			res.render('error');
+		})
 		}
 	},
 

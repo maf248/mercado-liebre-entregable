@@ -19,22 +19,41 @@ module.exports = [
     .withMessage('Has superado el máximo de 1.000 caracteres'),
     body('productImage')
     .custom(function(value, {req}) {
-        if (typeof req.file != 'undefined') {
+        if (req.params.id) {
+            if (typeof req.file != 'undefined') {
 
-            var extension = (path.extname(req.file.filename)).toLowerCase();
-            switch (extension) {
-            case '.jpg':
-                return true;
-            case '.jpeg':
-                return true;
-            case  '.png':
-                return true;
-            default:
-                return false;
+                var extension = (path.extname(req.file.filename)).toLowerCase();
+                switch (extension) {
+                case '.jpg':
+                    return true;
+                case '.jpeg':
+                    return true;
+                case  '.png':
+                    return true;
+                default:
+                    return false;
+                }
             }
+            return true;
 
+        } else {
+            if (typeof req.file != 'undefined') {
+
+                var extension = (path.extname(req.file.filename)).toLowerCase();
+                switch (extension) {
+                case '.jpg':
+                    return true;
+                case '.jpeg':
+                    return true;
+                case  '.png':
+                    return true;
+                default:
+                    return false;
+                }
+            }
+            return false;
         }
-        return false;
+
     })
     .withMessage('Debes subir una imagen del producto (formatos permitidos: .jpg .jpeg .png)')
     
