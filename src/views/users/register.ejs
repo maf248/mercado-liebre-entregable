@@ -19,7 +19,7 @@
 				<div class="product-detail">
 					<div class="col-12 col-md-6">
 						<label for="user" class="form-label">Dirección de Email:</label>
-						<input type="text" id="user" name="user" placeholder="Ej: ejemplo@gmail.com" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.user %>"<% } %>>
+						<input type="text" id="user" name="user" placeholder="Ej: ejemplo@gmail.com" class="form-input" <% if (typeof mail != 'undefined') { %> value="<%= mail %>"<% } %>>
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "user") { %>
@@ -29,7 +29,7 @@
                     
                     <div class="col-12 col-md-6">
 						<label for="password" class="form-label">Contraseña:</label>
-						<input type="text" id="password" name="password" placeholder="Debe tener entre 6 y 9 caracteres" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.password %>"<% } %>>
+						<input type="password" id="password" name="password" placeholder="Ingrese su contraseña" class="form-input">
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "password") { %>
