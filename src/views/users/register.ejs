@@ -8,7 +8,7 @@
 	<!-- /Header -->
 
 	<!-- register form -->
-    <div class="container products-wrapper">
+    <div class="container user-forms">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Registro de usuario</h2>
@@ -17,7 +17,7 @@
 		<div class="col-12">
 			<form action="/users/register" method="POST">
 				<div class="product-detail">
-					<div class="col-12 col-md-6">
+					<div class="user-forms-inputs">
 						<label for="user" class="form-label">Dirección de Email:</label>
 						<input type="text" id="user" name="user" placeholder="Ej: ejemplo@gmail.com" class="form-input" <% if (typeof mail != 'undefined') { %> value="<%= mail %>"<% } %>>
 						<% if (typeof errors != "undefined") {
@@ -27,7 +27,7 @@
 							<% } }) } %>
 					</div>
                     
-                    <div class="col-12 col-md-6">
+                    <div class="user-forms-inputs">
 						<label for="password" class="form-label">Contraseña:</label>
 						<input type="password" id="password" name="password" placeholder="Ingrese su contraseña" class="form-input">
 						<% if (typeof errors != "undefined") {

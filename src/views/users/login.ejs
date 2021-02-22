@@ -8,7 +8,7 @@
 	<!-- /Header -->
 
 	<!-- login form -->
-    <div class="container products-wrapper">
+    <div class="container user-forms">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Inicio de sesión</h2>
@@ -17,19 +17,19 @@
 		<div class="col-12">
 			<form action="/users/login" method="POST">
 				<div class="product-detail">
-					<div class="col-12 col-md-6">
+					<div class="user-forms-inputs">
 						<label for="user" class="form-label">Dirección de Email:</label>
 						<input type="text" id="user" name="user" placeholder="Ingresa tu dirección de email aquí" class="form-input" <% if (typeof email != 'undefined') { %> value="<%= email %>"<% } %>>
 						<% if (wrongEmail != null) { %> <p class="form-messages-validate">El email ingresado es incorrecto</p> <% } %>
 					</div>
                     
-                    <div class="col-12 col-md-6">
+                    <div class="user-forms-inputs">
 						<label for="password" class="form-label">Contraseña:</label>
 						<input type="password" id="password" name="password" placeholder="Ingresa tu contraseña aquí" class="form-input">
 						<% if (wrongPassword != null) { %> <p class="form-messages-validate">La contraseña ingresada es incorrecta</p> <% } %>
 					</div>
 
-					<div class="col-md-6 form-messages">
+					<div class="remember-checkbox">
 						<input type="checkbox" name="remember" id="remember">
 						<label for="remember">Mantener mi sesión iniciada</label>
 					</div>

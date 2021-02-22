@@ -15,7 +15,9 @@
 			</div>
 		</div>
     <% if (typeof locals.user != 'undefined') { %>
-    <p>Bienvenido <%= locals.user.email %> </p>
+    <h4>¡Bienvenido <%= locals.user.email %>!</h4>
+	<p>Fecha de registro: <%= new Date(locals.user.created_at).toLocaleString() %> </p>
+	<p>Email: <%= locals.user.email %></p>
     <% } %>
     <!-- /user profile -->
 
