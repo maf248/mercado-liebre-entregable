@@ -36,8 +36,40 @@ const controller = {
 		}
     },
 	login: (req, res) => {
-		res.render('./users/login');
+		res.render('./users/login', {wrongPassword: null, wrongEmail: null});
 	},
+    authenticate: (req, res) => {
+        db.User.findOne({
+            where: {
+                email: req.body.user
+            }
+        }).then((user) => {
+                if (user != null) {
+                    var check = bcryptjs.compareSync(req.body.password, user.password);
+                        if (check) {
+
+                            req.session.user = user;
+                            res.locals.user = req.session.user;
+                            console.log(req.session.user);
+                            if(req.body.remember != undefined ) {
+                                res.cookie('remember', user.email, {maxAge: 1000*60*60*10})
+                            } 
+                            return res.redirect('/users/profile');
+                                                
+                        } else if (!check) {
+                            
+                            return res.render('./users/login', {wrongPassword: true, wrongEmail: null, email: req.body.user});
+                        }     
+                } else {
+        
+                    return res.render('./users/login', {wrongPassword: null, wrongEmail: true, email: req.body.user});
+                }
+            })
+            .catch((err) => {
+                console.log(error);
+				res.render('error');
+            })
+    },
     profile: (req, res) => {
 		res.render('./users/profile');
 	},

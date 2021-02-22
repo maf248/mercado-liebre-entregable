@@ -20,21 +20,18 @@
 					<div class="col-12 col-md-6">
 						<label for="user" class="form-label">Dirección de Email:</label>
 						<input type="text" id="user" name="user" placeholder="Ingresa tu dirección de email aquí" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.user %>"<% } %>>
-						<% if (typeof errors != "undefined") {
-							errors.forEach ( error => { 
-								if (error.param == "user") { %>
-									<p><%= error.msg %></p>
-							<% } }) } %>
+						<% if (wrongEmail != null) { %> <p>El email ingresado es incorrecto</p> <% } %>
 					</div>
                     
                     <div class="col-12 col-md-6">
 						<label for="password" class="form-label">Contraseña:</label>
-						<input type="password" id="password" name="password" placeholder="Ingresa tu contraseña aquí" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.password %>"<% } %>>
-						<% if (typeof errors != "undefined") {
-							errors.forEach ( error => { 
-								if (error.param == "password") { %>
-									<p><%= error.msg %></p>
-							<% } }) } %>
+						<input type="password" id="password" name="password" placeholder="Ingresa tu contraseña aquí" class="form-input">
+						<% if (wrongPassword != null) { %> <p>La contraseña ingresada es incorrecta</p> <% } %>
+					</div>
+
+					<div class="col-md-6">
+						<label for="remember">Mantener mi sesión iniciada</label>
+						<input type="checkbox" name="remember" id="remember">
 					</div>
 					
 					<div class="col-12">

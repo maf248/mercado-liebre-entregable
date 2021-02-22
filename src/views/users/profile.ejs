@@ -8,7 +8,9 @@
 	<!-- /Header -->
 
 	<!-- user profile -->
-    <p>profileeeeeeeeee</p>
+    <% if (typeof locals.user != 'undefined') { %>
+    <p>Bienvenido <%= locals.user.email %> </p>
+    <% } %>
     <!-- /user profile -->
 
 	<!-- footer -->

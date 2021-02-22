@@ -18,7 +18,7 @@
 				<div class="row product-detail">
 					<div class="col-12 col-md-6">
 						<label for="name" class="form-label">Nombre del producto:</label>
-						<input type="text" id="name" name="name" placeholder="Ej: Zapatillas Reebok" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.name %>"<% } %>>
+						<input type="text" id="name" name="name" placeholder="Ej: Zapatillas Reebok" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.name %>"<% } %> required>
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "name") { %>
@@ -27,7 +27,7 @@
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="price" class="form-label">Precio del producto:</label>
-						<input type="text" id="price" name="price" placeholder="Ej: 5678" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.price %>"<% } %>>
+						<input type="text" id="price" name="price" placeholder="Ej: 5678" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.price %>"<% } %> required>
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "price") { %>
@@ -58,7 +58,7 @@
 						<select name="brand" id="brand" class="form-input" >
 							<option disabled selected>Elegí una marca:</option>
 							<% brands.forEach(brand => { %>
-							<option value="<%= brand.id %>"><%= brand.name %></option>
+							<option value="<%= brand.id %>"<% if (typeof body != 'undefined' && body.brand == brand.id) { %> selected="selected"<% } %>><%= brand.name %></option>
 							<% }); %>
 						</select>
 						<% if (typeof errors != "undefined") {
@@ -69,11 +69,11 @@
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="stock" class="form-label">Stock:</label>
-						<input type="number" id="discount" name="stock" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.stock %>"<% } else { %> value="1" <% } %>>
+						<input type="number" id="discount" name="stock" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.stock %>"<% } else { %> value="1" <% } %> required>
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="productImage" class="form-label">Imagen:</label>
-						<input type="file" name="productImage" accept="image/*" class="form-input"> 
+						<input type="file" name="productImage" accept="image/*" class="form-input" required> 
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "productImage") { %>

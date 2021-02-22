@@ -11,6 +11,7 @@ router.get('/register', usersController.register);
 router.post('/register', userValidate, usersController.create)
 
 router.get('/login', usersController.login);
+router.post('/login', usersController.authenticate);
 
 router.get('/profile', usersController.profile);
 
