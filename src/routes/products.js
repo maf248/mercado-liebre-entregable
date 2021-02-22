@@ -3,7 +3,10 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const productValidate = require('../middlewares/productValidate')
+
+// ************ Middleware's ************
+const productValidate = require('../middlewares/productValidate');
+const routesMiddleware = require('../middlewares/routesMiddleware');
 
 // ************ Controller Require ************
 const productsController = require('../controllers/productsController');
@@ -24,7 +27,7 @@ const upload = multer({storage: storage});
 router.get('/', productsController.index); 
 
 /*** CREATE ONE PRODUCT ***/ 
-router.get('/create', productsController.create); 
+router.get('/create', routesMiddleware, productsController.create); 
 router.post('/create', upload.single('productImage'), productValidate, productsController.store); 
 
 
@@ -32,12 +35,12 @@ router.post('/create', upload.single('productImage'), productValidate, productsC
 router.get('/:id', productsController.detail); 
 
 /*** EDIT ONE PRODUCT ***/ 
-router.get('/edit/:id', productsController.edit); 
+router.get('/edit/:id', routesMiddleware, productsController.edit); 
 router.patch('/edit/:id', upload.single('productImage'), productValidate, productsController.update); 
 
 
 /*** DELETE ONE PRODUCT ***/ 
-router.delete('/:id', productsController.destroy); 
+router.delete('/:id', routesMiddleware, productsController.destroy); 
 
 
 module.exports = router;
