@@ -407,6 +407,15 @@ textarea.form-input {
   padding: 15px;
 }
 
+.form-messages {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+.form-messages-validate {
+  font-size: 1.5em;
+  color: red;
+}
+
 
 
 /*====== Media-Queries ======*/

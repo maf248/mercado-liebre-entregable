@@ -23,7 +23,7 @@
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "user") { %>
-									<p><%= error.msg %></p>
+									<p class="form-messages-validate"><%= error.msg %></p>
 							<% } }) } %>
 					</div>
                     
@@ -33,7 +33,7 @@
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "password") { %>
-									<p><%= error.msg %></p>
+									<p class="form-messages-validate"><%= error.msg %></p>
 							<% } }) } %>
 					</div>
 					

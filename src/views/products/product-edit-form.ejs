@@ -22,7 +22,7 @@
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "name") { %>
-									<p><%= error.msg %></p>
+									<p class="form-messages-validate"><%= error.msg %></p>
 							<% } }) } %>
 					</div>
 					<div class="col-12 col-md-6">
@@ -31,7 +31,7 @@
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "price") { %>
-									<p><%= error.msg %></p>
+									<p class="form-messages-validate"><%= error.msg %></p>
 							<% } }) } %>
 					</div>
 					<div class="col-12 col-md-6">
@@ -56,7 +56,7 @@
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "brand") { %>
-									<p><%= error.msg %></p>
+									<p class="form-messages-validate"><%= error.msg %></p>
 							<% } }) } %>
 					</div>
 					<div class="col-12 col-md-6">
@@ -69,7 +69,7 @@
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "productImage") { %>
-									<p><%= error.msg %></p>
+									<p class="form-messages-validate"><%= error.msg %></p>
 							<% } }) } %>
 					</div>
 					<div class="col-12">
@@ -78,7 +78,7 @@
 						<% if (typeof errors != "undefined") {
 							errors.forEach ( error => { 
 								if (error.param == "description") { %>
-									<p><%= error.msg %></p>
+									<p class="form-messages-validate"><%= error.msg %></p>
 							<% } }) } %>
 					</div>
 					<div class="col-12">
