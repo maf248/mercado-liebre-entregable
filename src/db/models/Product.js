@@ -33,6 +33,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
 
         },
+        discount: {
+            type: DataTypes.INTEGER.UNSIGNED,
+            allowNull: false
+
+        },
         created_at: {
             type: DataTypes.DATE,
             allowNull: false
