@@ -61,6 +61,7 @@ const controller = {
 				photo: '/images/products/' + req.file.filename,
 				price: req.body.price,
 				stock: req.body.stock,
+				discount: req.body.discount,
 				category_id: req.body.category,
 				brand_id: req.body.brand			
 			})
@@ -131,6 +132,7 @@ const controller = {
 					description: req.body.description, 
 					photo: '/images/products/' + req.file.filename,
 					stock: req.body.stock,
+					discount: req.body.discount,
 					price: req.body.price,
 					brand_id: req.body.brand
 				}, { where: {id: req.params.id} })
