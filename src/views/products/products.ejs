@@ -22,7 +22,9 @@
 						</figure>
 						<article class="product-box_data">
 							<h2>$ <%= toThousand(parseInt(product.price)) %></h2>
-							<span>DISCOUNT% OFF</span>
+							<% if (product.discount > 0) { %>
+								<span><%= product.discount %> % OFF</span>
+								<% } %>
 							<p><%= product.title %></p>
 							<i class="fas fa-truck"></i>
 						</article>

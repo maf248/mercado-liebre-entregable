@@ -44,7 +44,7 @@
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="discount" class="form-label">Descuento:</label>
-						<input type="number" min="0" max="100" id="discount" name="discount" placeholder="Ej: 15%" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.discount %>"<% } else { %> value="0" <% } %>>
+						<input type="number" min="0" max="100" id="discount" name="discount" placeholder="Ej: 15%" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.discount %>"<% } else { %> value="<%= productToEdit.discount %>" <% } %>>
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="brand" class="form-label">Marca:</label>

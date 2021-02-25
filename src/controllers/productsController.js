@@ -20,7 +20,13 @@ const controller = {
 	detail: (req, res) => {
 		db.Product.findByPk(req.params.id)
 		.then((product) => {
-			res.render('./products/detail', {product: product, toThousand: toThousand});
+			var finalPrice = product.price - product.price / 100 * product.discount;
+			
+			finalPrice = finalPrice.toFixed(2).toString()
+			finalPrice = finalPrice.replace('.', ',');
+			
+			finalPrice = toThousand(finalPrice);
+			res.render('./products/detail', {product: product, toThousand: toThousand, finalPrice: finalPrice});
 		})
 		.catch(error => {
 			console.log(error);
@@ -148,6 +154,7 @@ const controller = {
 					title: req.body.name,
 					description: req.body.description,
 					stock: req.body.stock,
+					discount: req.body.discount,
 					price: req.body.price,
 					brand_id: req.body.brand
 				}, { where: {id: req.params.id} })
