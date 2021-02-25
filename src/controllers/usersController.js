@@ -72,7 +72,7 @@ const controller = {
     },
     profile: (req, res) => {
 		res.render('./users/profile');
-	},
+	}
 };
 
 module.exports = controller;

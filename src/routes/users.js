@@ -6,7 +6,6 @@ const router = express.Router();
 const userValidate = require('../middlewares/userValidate');
 const routesMiddleware = require('../middlewares/routesMiddleware');
 
-
 // ************ Controller Require ************
 const usersController = require('../controllers/usersController');
 

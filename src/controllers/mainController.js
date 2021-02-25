@@ -12,6 +12,22 @@ const controller = {
 	search: (req, res) => {
 		res.render('results')
 	},
+    avatarShow: (req, res) => {
+        res.render('./users/avatar');
+    },
+	avatarChange: (req, res) => {
+		/*---Aqui se guarda el nombre del archivo del nuevo avatar---*/
+		console.log(req.files);
+        db.User.update({
+            avatar: req.files[0].filename
+        }, {
+            where: {
+                id: {[db.Sequelize.Op.like] : [req.session.user.id]}
+            }
+        }).then( () => {
+            res.redirect('/users/profile')
+        })
+	}
 };
 
 module.exports = controller;
