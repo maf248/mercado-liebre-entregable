@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('../partials/head', {title: 'Avatar Usuario'}) %>
+<body>
+	<!-- Header -->
+	<%- include('../partials/headerNavbar') %>
+	<!-- /Header -->
+
+	<!-- user profile -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Perfíl de usuario</h2>
+			</div>
+		</div>
+    <% if (typeof locals.user != 'undefined') { %>
+    <h4>¡Bienvenido <%= locals.user.email %>!</h4>
+	<p>Haz click sobre la imagen para cambiar tu avatar</p>
+    
+    <form action="/avatar/upload" method="POST" enctype="multipart/form-data">
+        <% if (user.role == 'admin') { %>
+            <h2>Perfil de Administrador:</h2>
+        <% } else { %>
+            <h2>Perfil de Usuario:</h2>
+        <% } %>
+        <label for="avatar">  
+            <% if (locals.user.image != undefined) { %>
+            <img src="/images/users/<%= locals.user.avatar %>" alt="Avatar de usuario">
+        <% } else { %>
+            <img src="/images/users/default-avatar.jpg" alt="Avatar de usuario">
+            <% } %>
+        </label>
+
+        <input type="file" name="avatar" id="avatar" required>
+        <button type="submit">Guardar cambios</button>
+
+    </form>
+    <% } %>
+    <!-- /user profile -->
+
+	<!-- footer -->
+	<%- include('../partials/footer') %>
+	<!-- /footer -->
+
+</body>	
+</html>
