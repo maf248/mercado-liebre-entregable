@@ -17,7 +17,7 @@ const controller = {
     },
 	avatarChange: (req, res) => {
 		/*---Aqui se guarda el nombre del archivo del nuevo avatar---*/
-		console.log(req.files);
+		
         db.User.update({
             avatar: req.files[0].filename
         }, {
