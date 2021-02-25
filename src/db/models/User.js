@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         avatar: {
             type: DataTypes.STRING,
-            defaultValue: 'NULL'
+            allowNull: true
         },
         role: {
             type: DataTypes.ENUM('admin', 'user'),
