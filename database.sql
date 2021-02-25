@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `mercado_liebre_entregable`.`users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(100) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
-   `avatar` VARCHAR(100) NULL DEFAULT NULL,
+  `avatar` VARCHAR(100) NULL DEFAULT NULL,
   `role` ENUM('admin', 'user') NOT NULL DEFAULT 'user',
   `created_at` TIMESTAMP NOT NULL,
   `updated_at` TIMESTAMP NULL,
