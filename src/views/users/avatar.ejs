@@ -15,20 +15,16 @@
 			</div>
 		</div>
     <% if (typeof locals.user != 'undefined') { %>
-    <h4>¡Bienvenido <%= locals.user.email %>!</h4>
+    <h3>¡Bienvenido <%= user.email %>!</h3>
 	<p>Haz click sobre la imagen para cambiar tu avatar</p>
     
     <form action="/avatar/upload" method="POST" enctype="multipart/form-data">
-        <% if (user.role == 'admin') { %>
-            <h2>Perfil de Administrador:</h2>
-        <% } else { %>
-            <h2>Perfil de Usuario:</h2>
-        <% } %>
+        
         <label for="avatar">  
-            <% if (locals.user.image != undefined) { %>
-            <img src="/images/users/<%= locals.user.avatar %>" alt="Avatar de usuario">
+            <% if (locals.user.avatar != undefined) { %>
+            <img src="/images/users/<%= user.avatar %>" class="avatarDetail" alt="Avatar de usuario">
         <% } else { %>
-            <img src="/images/users/default-avatar.jpg" alt="Avatar de usuario">
+            <img src="/images/users/default-avatar.jpg" class="avatarDetail" alt="Avatar de usuario">
             <% } %>
         </label>
 

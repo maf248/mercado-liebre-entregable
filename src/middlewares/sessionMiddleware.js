@@ -3,21 +3,20 @@ const fs = require('fs');
 const db = require('../db/models');
 
 function sessionMiddleware(req, res, next) {
-  /*--Primero se setea una session, en caso de no tenerla pero SI tener una cookie----*/
+  /*---En caso de tener una cookie pero no session abierta, abre esta última----*/
   if(req.cookies.remember != undefined && req.session.user == undefined) {
         db.User.findOne({
-        /*---Se usa un hashId para que nunca cambie, y sea mas segura la cookie---*/
           where: {
             email: req.cookies.remember
           }
         }).then(user => {
-          return req.session.user = user
+          return req.session.user = user;
         }).catch(err => {
             console.log(error);
             res.render('error');
         })
   }
-  /*--Luego se guarda la variable locals, partiendo de la session ya abierta o generada mediante la cookie--*/
+  /*---Se guarda una variable local, a partir de la session existente o recien creada a partir de la cookie---*/
   if (req.session.user != undefined) {
 
     res.locals.user = req.session.user;

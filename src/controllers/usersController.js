@@ -10,7 +10,11 @@ const session = require('express-session');
 
 const controller = {
 	register: (req, res) => {
-		res.render('./users/register');
+        if (req.session.user == undefined) {
+		    res.render('./users/register');
+        } else {
+            res.redirect('/users/profile');
+        }
 	},
     create: (req, res) => {
         let errors = validationResult(req);
@@ -36,7 +40,12 @@ const controller = {
 		}
     },
 	login: (req, res) => {
-		res.render('./users/login', {wrongPassword: null, wrongEmail: null});
+        if (req.session.user == undefined) {
+            res.render('./users/login', {wrongPassword: null, wrongEmail: null});
+        } else {
+            res.redirect('/users/profile');
+        }
+		
 	},
     authenticate: (req, res) => {
         db.User.findOne({
@@ -71,7 +80,16 @@ const controller = {
             })
     },
     profile: (req, res) => {
-		res.render('./users/profile');
+		if (req.session.user != undefined) {
+            
+            db.User.findByPk(req.session.user.id)
+            .then(user => { 
+                  res.render('./users/profile', {user: user});
+                })
+
+            } else {
+            res.redirect('/users/login')
+        }
 	}
 };
 

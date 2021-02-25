@@ -8,12 +8,24 @@ const controller = {
 		.then((products) => {
 			res.render('index', {products: products, toThousand: toThousand});
 		})
+        .catch(error => {
+            console.log(error);
+            res.render('error');
+        })
 	},
 	search: (req, res) => {
 		res.render('results')
 	},
     avatarShow: (req, res) => {
-        res.render('./users/avatar');
+
+        if (req.session.user != undefined) {
+           
+            res.render('./users/avatar');
+
+            } else {
+            res.redirect('/users/login')
+        }
+    
     },
 	avatarChange: (req, res) => {
 		/*---Aqui se guarda el nombre del archivo del nuevo avatar---*/
@@ -24,8 +36,21 @@ const controller = {
             where: {
                 id: {[db.Sequelize.Op.like] : [req.session.user.id]}
             }
-        }).then( () => {
-            res.redirect('/users/profile')
+        }).then(() => {
+            db.User.findByPk(req.session.user.id)
+            .then(user => {
+                req.session.user = user;
+                res.redirect('/users/profile');
+            })
+            .catch(error => {
+                console.log(error);
+                res.render('error');
+            })
+            
+        })
+        .catch(error => {
+            console.log(error);
+            res.render('error');
         })
 	}
 };

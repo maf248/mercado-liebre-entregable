@@ -15,9 +15,23 @@
 			</div>
 		</div>
     <% if (typeof locals.user != 'undefined') { %>
-    <h4>¡Bienvenido <%= locals.user.email %>!</h4>
+
+    <h3>¡Bienvenido <%= locals.user.email %>!</h3>
+	<a href="/avatar/upload">
+		<% if (locals.user.avatar != undefined) { %>
+			<img src="/images/users/<%= locals.user.avatar %>" class="avatarImg" alt="Avatar de usuario">
+		<% } else { %>
+			<img src="/images/users/default-avatar.jpg" class="avatarImg" alt="Avatar de usuario">
+			<% } %>
+	</a>
+	<% if (locals.user.role == 'admin') { %>
+		<h2>Rol: Administrador</h2>
+	<% } else { %>
+		<h2>Rol: Usuario</h2>
+	<% } %>
 	<p>Fecha de registro: <%= new Date(locals.user.created_at).toLocaleString() %> </p>
 	<p>Email: <%= locals.user.email %></p>
+
     <% } %>
     <!-- /user profile -->
 
