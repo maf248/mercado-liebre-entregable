@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `mercado_liebre_entregable`.`products` (
   `photo` VARCHAR(100) NOT NULL,
   `price` FLOAT(10,2) UNSIGNED NOT NULL,
   `stock` INT UNSIGNED NOT NULL,
-    `discount` SMALLINT UNSIGNED NOT NULL,
+  `discount` SMALLINT UNSIGNED NOT NULL,
   `brand_id` INT UNSIGNED NOT NULL,
   `category_id` INT UNSIGNED NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
