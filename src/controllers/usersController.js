@@ -19,6 +19,7 @@ const controller = {
     create: (req, res) => {
         let errors = validationResult(req);
 		 /*---Se chequean los inputs. Si no hay errores los guarda---*/
+         
 		if (errors.isEmpty()) {
             /*---Si NO hay errores en los campos, guarda todo y redirije a detalle del producto---*/
 			db.User.create({
@@ -31,8 +32,8 @@ const controller = {
 			})
 			.catch(error => {
 				console.log(error);
-				res.render('error');
 			})
+
 		} else {
 
 			res.render('./users/register', {errors: errors.errors, mail: req.body.user});
