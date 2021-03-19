@@ -6,7 +6,11 @@ const {validationResult} = require('express-validator');
 const controller = {
 	// Root - Show all products
 	index: (req, res) => {
-		db.Product.findAll()
+		db.Product.findAll({order: [
+            ['created_at', 'DESC'],
+            ['title', 'ASC'],
+        ],
+        attributes: ['id', 'photo', 'title', 'price', 'discount']})
 		.then((products) => {
 			res.render('./products/products', {products: products, toThousand: toThousand});
 		})
