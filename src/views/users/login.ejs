@@ -2,6 +2,7 @@
 <html lang="es">
 <!-- Include Head -->
 <%- include('../partials/head', {title: 'Iniciar Sesión'}) %>
+<script src="/js/login.js" defer></script>
 <body>
 	<!-- Header -->
 	<%- include('../partials/headerNavbar') %>
@@ -15,17 +16,25 @@
 			</div>
 		</div>
 		<div class="col-12">
-			<form action="/users/login" method="POST">
+			<form action="/users/login" method="POST" id="loginForm">
 				<div class="product-detail">
 					<div class="user-forms-inputs">
 						<label for="user" class="form-label">Dirección de Email:</label>
 						<input type="text" id="user" name="user" placeholder="Ingresa tu dirección de email aquí" class="form-input" <% if (typeof email != 'undefined') { %> value="<%= email %>"<% } %>>
+						<div id="userError"></div>
 						<% if (wrongEmail != null) { %> <p class="form-messages-validate">El email ingresado es incorrecto</p> <% } %>
 					</div>
                     
                     <div class="user-forms-inputs">
 						<label for="password" class="form-label">Contraseña:</label>
-						<input type="password" id="password" name="password" placeholder="Ingresa tu contraseña aquí" class="form-input">
+						<div class="form-input passwordContainer">
+							<input type="password" id="password" class="password" name="password" placeholder="Ingresa tu contraseña aquí" >
+							<div id="showPassword" class="showPassword">
+								<i class="fas fa-eye"></i>
+							</div>
+						</div>
+						
+						<div id="passwordError"></div>
 						<% if (wrongPassword != null) { %> <p class="form-messages-validate">La contraseña ingresada es incorrecta</p> <% } %>
 					</div>
 

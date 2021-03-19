@@ -438,6 +438,32 @@ textarea.form-input {
 .avatarDetail {
   max-width: 50%;
 }
+.passwordContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.passwordContainer input {
+  width: 95%;
+}
+.passwordContainer i {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.showPassword {
+  font-size: 1.5em;
+  display: flex;
+  width: 5%;
+}
+.showPassword i {
+  cursor: pointer;
+}
+.password {
+  outline: none;
+  border: none;
+  font-size: 1em; 
+}
 
 
 
