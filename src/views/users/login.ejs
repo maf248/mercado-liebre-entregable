@@ -22,7 +22,11 @@
 						<label for="user" class="form-label">Dirección de Email:</label>
 						<input type="text" id="user" name="user" placeholder="Ingresa tu dirección de email aquí" class="form-input" <% if (typeof email != 'undefined') { %> value="<%= email %>"<% } %>>
 						<div id="userError"></div>
-						<% if (wrongEmail != null) { %> <p class="form-messages-validate">El email ingresado es incorrecto</p> <% } %>
+						<% if (typeof errors != "undefined") {
+							errors.forEach ( error => { 
+								if (error.param == "user") { %>
+									<p class="form-messages-validate"><%= error.msg %></p>
+							<% } }) } %>
 					</div>
                     
                     <div class="user-forms-inputs">
@@ -33,10 +37,13 @@
 								<i class="fas fa-eye"></i>
 							</div>
 						</div>
-						
 						<div id="passwordError"></div>
-						<% if (wrongPassword != null) { %> <p class="form-messages-validate">La contraseña ingresada es incorrecta</p> <% } %>
-					</div>
+						<% if (typeof errors != "undefined") {
+							errors.forEach ( error => { 
+								if (error.param == "password") { %>
+									<p class="form-messages-validate"><%= error.msg %></p>
+							<% } }) } %>
+						</div>
 
 					<div class="remember-checkbox">
 						<input type="checkbox" name="remember" id="remember">

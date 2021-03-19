@@ -17,11 +17,10 @@ const controller = {
         }
 	},
     create: (req, res) => {
+        /*---Se chequean los inputs. Si no hay errores crea el usuario---*/
         let errors = validationResult(req);
-		 /*---Se chequean los inputs. Si no hay errores los guarda---*/
-         
 		if (errors.isEmpty()) {
-            /*---Si NO hay errores en los campos, guarda todo y redirije a detalle del producto---*/
+            /*---Registra al usuario y lo redirije a login---*/
 			db.User.create({
 				email: req.body.user,
 				password: bcryptjs.hashSync(req.body.password, 10)	
@@ -49,36 +48,32 @@ const controller = {
 		
 	},
     authenticate: (req, res) => {
+        /*---Se valida email y contraseña en la DB mediante express-validator---*/
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+           /*---Si NO hay errores, email y contraseña son correctos, hace log-in---*/
         db.User.findOne({
             where: {
                 email: req.body.user
             }
         }).then((user) => {
-                if (user != null) {
-                    var check = bcryptjs.compareSync(req.body.password, user.password);
-                        if (check) {
+                req.session.user = user;
+                res.locals.user = req.session.user;
+                            
+                if(req.body.remember != undefined ) {
+                    res.cookie('remember', user.email, {maxAge: 1000*60*60*10})
+                } 
 
-                            req.session.user = user;
-                            res.locals.user = req.session.user;
-                            
-                            if(req.body.remember != undefined ) {
-                                res.cookie('remember', user.email, {maxAge: 1000*60*60*10})
-                            } 
-                            return res.redirect('/users/profile');
-                                                
-                        } else if (!check) {
-                            
-                            return res.render('./users/login', {wrongPassword: true, wrongEmail: null, email: req.body.user});
-                        }     
-                } else {
-        
-                    return res.render('./users/login', {wrongPassword: null, wrongEmail: true, email: req.body.user});
-                }
+                return res.redirect('/users/profile');
+                                                        
             })
             .catch((err) => {
                 console.log(error);
 				res.render('error');
             })
+        } else {
+            res.render('./users/login', {errors: errors.errors})
+        }
     },
     profile: (req, res) => {
 		if (req.session.user != undefined) {
