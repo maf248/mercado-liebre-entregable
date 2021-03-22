@@ -6,6 +6,7 @@ const logger = require('morgan');
 const path = require('path');
 const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
 var session = require('express-session');
+
 var sessionMiddleware = require('./middlewares/sessionMiddleware');
 
 // ************ express() - (don't touch) ************
@@ -24,7 +25,6 @@ app.use(sessionMiddleware);
 // ************ Template Engine - (don't touch) ************
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // Define la ubicación de la carpeta de las Vistas
-
 
 
 // ************ WRITE YOUR CODE FROM HERE ************

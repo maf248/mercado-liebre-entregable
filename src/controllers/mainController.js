@@ -1,4 +1,6 @@
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const url = require('url');
+const querystring = require('querystring');
 
 const db = require('../db/models');
 
@@ -14,7 +16,21 @@ const controller = {
         })
 	},
 	search: (req, res) => {
-		res.render('results')
+
+        let rawUrl = req.url;
+        let parsedUrl = url.parse(rawUrl);
+        let parsedQs = querystring.parse(parsedUrl.query);
+
+        db.Product.findAll({where: {
+            title: {[db.Sequelize.Op.like]: `%${parsedQs.keywords}%`}
+        }})
+		.then((products) => {
+			res.render('results', {products: products, toThousand: toThousand});
+		})
+        .catch(error => {
+            console.log(error);
+            res.render('error');
+        })
 	},
     avatarShow: (req, res) => {
 
