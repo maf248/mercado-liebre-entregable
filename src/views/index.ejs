@@ -14,13 +14,10 @@
 			'autoplay'    : true,
 			'pauseOnHover' : false,
 			'focus' : 'center',
-			'gap' : 1000,
+			'gap' : 0,
 			'easing' : 'ease',
 			'speed' : 250,
 		} )
-		splide.on( 'autoplay:playing', function ( rate ) {
-		console.log( rate ); // 0-1
-		} );
 		splide.mount();
 	} );
 </script>
@@ -36,10 +33,12 @@
 		<div class="splide">
 			<div class="splide__track">
 				<ul class="splide__list">
-					<li class="splide__slide"><img src="/images/img-home-banner.jpg" alt="banner"></li>
-					<% products.forEach(product => { %>
-					<li class="splide__slide"><a href="/products/<%= product.id %>"><img src="<%= product.photo %>" alt="imagen de producto"></a></li>
-					<% }); %>
+					<li class="splide__slide"><a href="#"><img src="/images/img-home-banner.jpg" alt="banner principal"></a></li>
+					<li class="splide__slide"><a href="#"><img src="/images/banner.jpg" alt="banner 1"></a></li>
+					<li class="splide__slide"><a href="#"><img src="/images/banner2.jpg" alt="banner 2"></a></li>
+					<li class="splide__slide"><a href="#"><img src="/images/banner3.jpg" alt="banner 3"></a></li>
+					<li class="splide__slide"><a href="#"><img src="/images/banner4.jpg" alt="banner 4"></a></li>
+					<li class="splide__slide"><a href="#"><img src="/images/banner5.jpg" alt="banner 5"></a></li>
 				</ul>
 			</div>
 		</div>
