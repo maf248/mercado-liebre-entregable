@@ -2,13 +2,49 @@
 <html lang="es">
 <!-- Include Head -->
 <%- include('partials/head', {title: 'Inicio'}) %>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script>
+	document.addEventListener( 'DOMContentLoaded', function () {
+		var splide = new Splide( '.splide', {
+			'type' : 'loop',
+			'autoWidth' : true,
+			'height' : 320,
+			'autoplay'    : true,
+			'pauseOnHover' : false,
+			'focus' : 'center',
+			'gap' : 1000,
+			'easing' : 'ease',
+			'speed' : 250,
+		} )
+		splide.on( 'autoplay:playing', function ( rate ) {
+		console.log( rate ); // 0-1
+		} );
+		splide.mount();
+	} );
+</script>
+
+
 <body>
 	<!-- Header -->
 	<%- include('partials/headerNavbar') %>
 	<!-- /Header -->
 	
 	<!-- Banner -->
-	<div class="banner"></div>
+	<section class="banner">
+		<div class="splide">
+			<div class="splide__track">
+				<ul class="splide__list">
+					<li class="splide__slide"><img src="/images/img-home-banner.jpg" alt="banner"></li>
+					<% products.forEach(product => { %>
+					<li class="splide__slide"><a href="/products/<%= product.id %>"><img src="<%= product.photo %>" alt="imagen de producto"></a></li>
+					<% }); %>
+				</ul>
+			</div>
+		</div>
+	</section>
+	
 	<!-- /Banner -->
 
 	<!-- ultima visita -->

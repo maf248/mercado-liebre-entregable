@@ -142,11 +142,12 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 100px;
+  background-color: white;
+}
+.splide__slide img {
+	max-width : 100%;
+  width: auto;
+	max-height: 320px;
 }
 
 
