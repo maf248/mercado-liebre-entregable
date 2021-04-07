@@ -143,11 +143,13 @@ hr {
 /*====== Banner ======*/
 .banner {
   background-color: white;
+  height: fit-content;
+  width: 100%;
 }
+
 .splide__slide img {
-	max-width : 100%;
-  width: auto;
-	max-height: 320px;
+	width: 100%;
+  height: auto;
 }
 
 
@@ -485,10 +487,6 @@ textarea.form-input {
   .main-header_credit-link {
     margin-top: 0;
     text-align: right;
-  }
-
-  .banner {
-    height: 320px;
   }
 
   .btn-toggle-navbar {
