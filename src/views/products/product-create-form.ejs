@@ -10,12 +10,12 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Formulario de creación de productos</h2>
+				<h2 class="products-title d-flex justify-content-center">Formulario de creación de productos</h2>
 			</div>
 		</div>
 		<div class="col-12">
 			<form action="/products/create" method="POST" enctype="multipart/form-data">
-				<div class="row product-detail">
+				<div class="row product-detail product-form">
 					<div class="col-12 col-md-6">
 						<label for="name" class="form-label">Nombre del producto:</label>
 						<input type="text" id="name" name="name" placeholder="Ej: Zapatillas Reebok" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.name %>"<% } %> required>

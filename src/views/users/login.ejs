@@ -12,12 +12,12 @@
     <div class="container user-forms">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Inicio de sesión</h2>
+				<h2 class="user-form-title">Inicio de sesión</h2>
 			</div>
 		</div>
 		<div class="col-12">
 			<form action="/users/login" method="POST" id="loginForm">
-				<div class="product-detail">
+				<div class="user-form-container">
 					<div class="user-forms-inputs">
 						<label for="user" class="form-label">Dirección de Email:</label>
 						<input type="text" id="user" name="user" placeholder="Ingresa tu dirección de email aquí" class="form-input" <% if (typeof email != 'undefined') { %> value="<%= email %>"<% } %>>

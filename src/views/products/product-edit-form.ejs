@@ -10,12 +10,12 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Estás editando: <i><%= productToEdit.title %></i></h2>
+				<h2 class="products-title d-flex justify-content-center">Estás editando: <i><%= productToEdit.title %></i></h2>
 			</div>
 		</div>
 		<div class="col-12">
 			<form action="/products/edit/<%= productToEdit.id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
-				<div class="row product-detail">
+				<div class="row product-detail product-form">
 					<div class="col-12 col-md-6">
 						<label for="name" class="form-label">Nombre del producto:</label>
 						<input type="text" id="name" name="name" class="form-input" <% if (typeof body != 'undefined') { %> value="<%= body.name %>"<% } else { %> value="<%= productToEdit.title %>"<% } %>>

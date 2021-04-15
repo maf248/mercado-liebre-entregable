@@ -12,12 +12,12 @@
     <div class="container user-forms">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Registro de usuario</h2>
+				<h2 class="user-form-title">Registro de usuario</h2>
 			</div>
 		</div>
 		<div class="col-12">
 			<form action="/users/register" method="POST" id="loginForm">
-				<div class="product-detail">
+				<div class="user-form-container">
 					<div class="user-forms-inputs">
 						<label for="user" class="form-label">Dirección de Email:</label>
 						<input type="text" id="user" name="user" placeholder="Ej: ejemplo@gmail.com" class="form-input" <% if (typeof mail != 'undefined') { %> value="<%= mail %>"<% } %>>
