@@ -69,6 +69,7 @@ hr {
 .main-header {
   padding: 15px 0;
   background-color: var(--yellow);
+  isolation: isolate;
 }
 
 .main-header_home-link,
@@ -151,7 +152,9 @@ hr {
 	width: 100%;
   height: auto;
 }
-
+.darkmode--activated .splide__slide img {
+  opacity: 0.8;
+}
 
 /*====== Products ======*/
 .products-wrapper {
@@ -164,6 +167,9 @@ hr {
   font-weight: 400;
   color: var(--gray);
 }
+.darkmode--activated .products-title {
+  font-weight: 800;
+}
 
 .product-box {
   background-color: #ffffff;
@@ -173,10 +179,20 @@ hr {
   margin: 20px 0;
 }
 
+.darkmode--activated .product-box {
+  background-color: black;
+  border: 1px solid gray;
+}
+.darkmode--activated .product-box h2 {
+  color: white;
+}
+
 .product-box a {
   display: block;
 }
-
+.darkmode--activated .product-box_image {
+  background-color: gray;
+}
 .product-box_image {
   border-bottom: 1px solid var(--light-gray);
 }
