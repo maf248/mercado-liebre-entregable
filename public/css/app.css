@@ -191,7 +191,7 @@ hr {
   display: block;
 }
 .darkmode--activated .product-box_image {
-  background-color: gray;
+  background-color: none;
 }
 .product-box_image {
   border-bottom: 1px solid var(--light-gray);
@@ -325,20 +325,32 @@ hr {
   font-weight: 400;
   font-size: 2.8em;
 }
+.darkmode--activated .product-detail-title {
+  color: gray;
+}
 
 .product-detail-description {
   padding: 15px;
   font-size: 1.8em;
   line-height: 1.5;
 }
+.darkmode--activated .product-detail-description {
+  color: gray;
+}
 
 .product-detail-price {
   font-size: 5.5em;
   margin: 10px 0;
 }
+.darkmode--activated .product-detail-price {
+  color: gray;
+}
 
 .small {
   font-size: 1.8em;
+  color: var(--green);
+}
+.darkmode--activated .small {
   color: var(--green);
 }
 
