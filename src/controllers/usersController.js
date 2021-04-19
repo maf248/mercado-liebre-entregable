@@ -86,7 +86,15 @@ const controller = {
             } else {
             res.redirect('/users/login')
         }
-	}
+	},
+    logout: (req, res, next) => {
+
+        res.cookie('remember', '', {maxAge: 0});
+
+        req.session.destroy();
+
+        res.redirect('/');
+    }
 };
 
 module.exports = controller;

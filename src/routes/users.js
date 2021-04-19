@@ -15,6 +15,7 @@ router.post('/register', registerValidate, usersController.create)
 
 router.get('/login', usersController.login);
 router.post('/login', loginValidate, usersController.authenticate);
+router.post('/logout', usersController.logout);
 
 router.get('/profile', routesMiddleware, usersController.profile);
 

@@ -110,6 +110,18 @@ hr {
   cursor: pointer;
 }
 
+.imagenPerfilNavbar {
+  width: 100%;
+  max-width: 35px;
+  align-self: center;
+  border-radius: 5px;
+}
+.logout {
+  border: none;
+  background-color: var(--yellow);
+  cursor: pointer;
+}
+
 
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
