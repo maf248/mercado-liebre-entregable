@@ -11,13 +11,13 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Perfíl de usuario</h2>
+				<h2 class="user-form-title">Perfíl de usuario</h2>
 			</div>
 		</div>
     <% if (typeof locals.user != 'undefined') { %>
 
-    <h3>¡Bienvenido <%= locals.user.email %>!</h3>
-	<a href="/avatar/upload">
+    <h3 class="d-flex justify-content-center" style="font-size: 1.5em;">¡Bienvenido <%= locals.user.email %>!</h3>
+	<a href="/avatar/upload" class="d-flex justify-content-center">
 		<% if (locals.user.avatar != undefined) { %>
 			<img src="/images/users/<%= locals.user.avatar %>" class="avatarImg" alt="Avatar de usuario">
 		<% } else { %>
@@ -25,12 +25,12 @@
 			<% } %>
 	</a>
 	<% if (locals.user.role == 'admin') { %>
-		<h2>Rol: Administrador</h2>
+		<h2 class="d-flex justify-content-center" style="font-size: 1.7em;">Rol: Administrador</h2>
 	<% } else { %>
-		<h2>Rol: Usuario</h2>
+		<h2 class="d-flex justify-content-center" style="font-size: 1.7em;">Rol: Usuario</h2>
 	<% } %>
-	<p>Fecha de registro: <%= new Date(locals.user.created_at).toLocaleString() %> </p>
-	<p>Email: <%= locals.user.email %></p>
+	<p class="d-flex justify-content-center" style="font-size: 1.5em;">Fecha de registro: <%= new Date(locals.user.created_at).toLocaleString() %> </p>
+	<p class="d-flex justify-content-center" style="font-size: 1.5em;">Email: <%= locals.user.email %></p>
 
     <% } %>
     <!-- /user profile -->

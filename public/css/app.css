@@ -405,6 +405,9 @@ hr {
   border: none;
   margin-bottom: 15px;
 }
+.darkmode--activated .buy-now-button {
+  isolation: isolate;
+}
 
 .action-button {
   border: none;

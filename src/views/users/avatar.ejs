@@ -11,16 +11,16 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Perfíl de usuario</h2>
+				<h2 class="user-form-title">Perfíl de usuario</h2>
 			</div>
 		</div>
     <% if (typeof locals.user != 'undefined') { %>
-    <h3>¡Bienvenido <%= user.email %>!</h3>
-	<p>Haz click sobre la imagen para cambiar tu avatar</p>
+    <h3 class="d-flex justify-content-center" style="font-size: 1.5em;">¡Bienvenido <%= user.email %>!</h3>
+	<p class="d-flex justify-content-center" style="font-size: 1.5em; font-style: italic; margin: 30px 0px">Haz click sobre la imagen para cambiar tu avatar</p>
     
     <form action="/avatar/upload" method="POST" enctype="multipart/form-data">
         
-        <label for="avatar">  
+        <label for="avatar" class="d-flex justify-content-center">  
             <% if (locals.user.avatar != undefined) { %>
             <img src="/images/users/<%= user.avatar %>" class="avatarDetail" alt="Avatar de usuario">
         <% } else { %>
@@ -28,8 +28,9 @@
             <% } %>
         </label>
 
-        <input type="file" name="avatar" id="avatar" required>
-        <button type="submit">Guardar cambios</button>
+        <input type="file" name="avatar" id="avatar" required style="margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 25px" class="buy-now-button d-flex justify-content-center">
+        <br>
+        <button type="submit" style="margin-left: auto; margin-right: auto;" class="buy-now-button d-flex justify-content-center">Guardar cambios</button>
 
     </form>
     <% } %>
