@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./src/bin/www"
+    "start": "node ./src/bin/www",
+    "dev": "nodemon ./src/bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -22,5 +23,8 @@
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.1",
     "sequelize": "^6.5.0"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
