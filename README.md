@@ -5,6 +5,7 @@
 ## ● Descripción y stack:
 
 Copia de Mercado Libre, con CRUD de productos y de usuarios (se puede crear, leer, actualizar y borrar) realizada con:
+[- Listado de requisitos del trabajo individual](https://docs.google.com/spreadsheets/d/1CrG3SiI7c5pNU2UbnMiiwm8iaUYsQV36PG1qqtb_olM/edit#gid=0)
 
 Backend:
 - Node.js, Express, Express Router para las rutas y controladores.
@@ -25,8 +26,6 @@ Frontend:
 - Lightbox2 para zoom y overlay en imagenes de productos.
 - DarkmodeJS para el switch entre modo oscuro y modo claro.
 - Bootstrap y FontAwesome para UI e iconos.
-
-[- Listado de requisitos del trabajo individual](https://docs.google.com/spreadsheets/d/1CrG3SiI7c5pNU2UbnMiiwm8iaUYsQV36PG1qqtb_olM/edit#gid=0)
 
 ## [★ Live version:](https://mercado-liebre-dark-mode.herokuapp.com)
 
