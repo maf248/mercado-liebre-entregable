@@ -28,7 +28,7 @@ Frontend:
 
 [- Listado de requisitos del trabajo individual](https://docs.google.com/spreadsheets/d/1CrG3SiI7c5pNU2UbnMiiwm8iaUYsQV36PG1qqtb_olM/edit#gid=0)
 
-## ★ Live version: 
+## [★ Live version:](https://mercado-liebre-dark-mode.herokuapp.com)
 
 Podes ver la última version corriendo! Hice deploy tanto de la base de datos como del repositorio en [Heroku](https://mercado-liebre-dark-mode.herokuapp.com)
 
