@@ -3,9 +3,10 @@
 
 
 ## ● Descripción y stack:
+[- Listado de requisitos del trabajo individual](https://docs.google.com/spreadsheets/d/1CrG3SiI7c5pNU2UbnMiiwm8iaUYsQV36PG1qqtb_olM/edit#gid=0)
 
 Copia de Mercado Libre, con CRUD de productos y de usuarios (se puede crear, leer, actualizar y borrar) realizada con:
-[- Listado de requisitos del trabajo individual](https://docs.google.com/spreadsheets/d/1CrG3SiI7c5pNU2UbnMiiwm8iaUYsQV36PG1qqtb_olM/edit#gid=0)
+
 
 Backend:
 - Node.js, Express, Express Router para las rutas y controladores.
